@@ -13,7 +13,6 @@
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H
 
-#include <iterator>
 #include <string>
 
 class	Contact {
