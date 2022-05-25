@@ -40,7 +40,7 @@ public:
 	void				setPhoneNumber(std::string const first_name);
 	void				setDarkestSecret(std::string const first_name);
 
-	void				showContactInfo(void);
+	void				showContactInfo(void) const;
 
 private:
 

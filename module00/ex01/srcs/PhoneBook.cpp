@@ -27,18 +27,23 @@ PhoneBook::~PhoneBook()
 	return ;
 }
 
-void	PhoneBook::printContactInfo(size_t idx)
+size_t	PhoneBook::getNbrContact(void) const
+{
+	return(this->_idx);
+}
+
+void	PhoneBook::printContactInfo(size_t idx) const
 {
 	if (idx >= 0 && idx <= 7)
 		this->_list_contact[idx].showContactInfo();
 }
 
-bool	PhoneBook::containsOnlyLetters(std::string const &str)
+bool	PhoneBook::_containsOnlyLetters(std::string const &str) const
 {
 	return (str.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '") == std::string::npos);
 }
 
-bool	PhoneBook::containsOnlyDigits(std::string const &str)
+bool	PhoneBook::_containsOnlyDigits(std::string const &str) const
 {
 	return (str.find_first_not_of("0123456789 ") == std::string::npos);
 }
@@ -52,21 +57,21 @@ std::string	PhoneBook::trim(std::string const &str)
 	return start == end ? str : str.substr(start, end - start + 1);
 }
 
-std::string	PhoneBook::getInput(bool letters_digits, std::string const prompt)
+std::string	PhoneBook::_getInput(bool letters_digits, std::string const prompt)
 {
-	bool		(PhoneBook::*check_fnct)(std::string const &);
+	bool		(PhoneBook::*check_fnct)(std::string const &) const;
 	std::string	type;
 	std::string	str;
 
 	if (letters_digits)
 	{
 		type = "letters";
-		check_fnct = &PhoneBook::containsOnlyLetters;
+		check_fnct = &PhoneBook::_containsOnlyLetters;
 	}
 	else
 	{
 		type = "digits";
-		check_fnct = &PhoneBook::containsOnlyDigits;
+		check_fnct = &PhoneBook::_containsOnlyDigits;
 	}
 	while (true)
 	{
@@ -97,19 +102,19 @@ bool PhoneBook::addContact(void) {
 
 	if (this->_idx == 8)
 		this->_idx -= 1;
-	this->_list_contact[this->_idx].setFirstName(this->getInput(true, "First name     : "));
+	this->_list_contact[this->_idx].setFirstName(_getInput(true, "First name     : "));
 	if (this->_halt)
 		return (false);
-	this->_list_contact[this->_idx].setLastName(this->getInput(true, "Last name      : "));
+	this->_list_contact[this->_idx].setLastName(_getInput(true, "Last name      : "));
 	if (this->_halt)
 		return (false);
-	this->_list_contact[this->_idx].setNickName(this->getInput(true, "Nick name      : "));
+	this->_list_contact[this->_idx].setNickName(_getInput(true, "Nick name      : "));
 	if (this->_halt)
 		return (false);
-	this->_list_contact[this->_idx].setPhoneNumber(this->getInput(false, "Phone Number   : "));
+	this->_list_contact[this->_idx].setPhoneNumber(_getInput(false, "Phone Number   : "));
 	if (this->_halt)
 		return (false);
-	this->_list_contact[this->_idx].setDarkestSecret(this->getInput(true, "Darkest secret : "));
+	this->_list_contact[this->_idx].setDarkestSecret(_getInput(true, "Darkest secret : "));
 	if (this->_halt)
 		return (false);
 	if (this->_idx < 8)
@@ -118,7 +123,7 @@ bool PhoneBook::addContact(void) {
 	return (true);
 }
 
-void	PhoneBook::printContactTab(void)
+void	PhoneBook::printContactTab(void) const
 {
 	std::cout << std::endl;
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
@@ -127,9 +132,9 @@ void	PhoneBook::printContactTab(void)
 	for (size_t i = 0; i < this->_idx; i++)
 	{
 		std::cout << "|" << std::setw(10) << i << "|";
-		printNameInfo(this->_list_contact[i].getFirstName());
-		printNameInfo(this->_list_contact[i].getLastName());
-		printNameInfo(this->_list_contact[i].getNickName());
+		_printNameInfo(this->_list_contact[i].getFirstName());
+		_printNameInfo(this->_list_contact[i].getLastName());
+		_printNameInfo(this->_list_contact[i].getNickName());
 		std::cout << std::endl;
 	}
 	std::cout << "+----------+----------+----------+----------+" << std::endl << std::endl;
@@ -173,7 +178,7 @@ bool	PhoneBook::askIndexContact(void)
 	return (true);
 }
 
-void	PhoneBook::printNameInfo(std::string name)
+void	PhoneBook::_printNameInfo(std::string name) const
 {
 	if (name.length() > 10)
 	{

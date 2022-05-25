@@ -76,10 +76,10 @@ void	Contact::setDarkestSecret(std::string const darkest_secret) {
 	this->_darkest_secret = darkest_secret;
 }
 
-void	Contact::showContactInfo(void) {
-	std::cout << "First name     : " << this->getFirstName() << "." << std::endl;
-	std::cout << "Last name      : " << this->getLastName() << "." << std::endl;
-	std::cout << "Nick name      : " << this->getNickName() << "." << std::endl;
-	std::cout << "Phone number   : " << this->getPhoneNumber() << "." << std::endl;
-	std::cout << "Darkest secret : " << this->getDarkestSecret() << "." << std::endl;
+void	Contact::showContactInfo(void) const {
+	std::cout << "First name     : " << this->getFirstName() << std::endl;
+	std::cout << "Last name      : " << this->getLastName() << std::endl;
+	std::cout << "Nick name      : " << this->getNickName() << std::endl;
+	std::cout << "Phone number   : " << this->getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret : " << this->getDarkestSecret() << std::endl;
 }

@@ -21,11 +21,12 @@ public:
 
 	PhoneBook(void);
 	~PhoneBook(void);
-	bool		addContact(void);
-	void		printContactInfo(size_t idx);
-	std::string	trim(std::string const &str);
-	void		printContactTab(void);
-	bool		askIndexContact(void);
+	size_t			getNbrContact(void) const;
+	bool			addContact(void);
+	std::string		trim(std::string const &str);
+	void			printContactInfo(size_t idx) const;
+	void			printContactTab(void) const;
+	bool			askIndexContact(void);
 
 private:
 
@@ -33,10 +34,10 @@ private:
 	Contact				_list_contact[8];
 	bool				_halt;
 
-	std::string	getInput(bool letters_digits, std::string const prompt);
-	bool		containsOnlyLetters(std::string const &str);
-	bool		containsOnlyDigits(std::string const &str);
-	void		printNameInfo(std::string str);
+	std::string	_getInput(bool letters_digits, std::string const prompt);
+	bool		_containsOnlyLetters(std::string const &str) const;
+	bool		_containsOnlyDigits(std::string const &str) const;
+	void		_printNameInfo(std::string str) const;
 };
 
 #endif

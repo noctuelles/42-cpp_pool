@@ -13,12 +13,15 @@
 #include <iostream>
 #include <string>
 #include "PhoneBook.hpp"
+#include <unistd.h>
 
 int	main(void)
 {
 	PhoneBook	thePhoneBook;
 	std::string	cmd;
 
+	std::cout << "* Scratching HDD noise... *" << std::endl << std::endl;
+	sleep(1);
 	std::cout << "My Digital Book v0.1 - (c) EzPhone 1988" << std::endl << std::endl;
 	while (true)
 	{
@@ -37,8 +40,13 @@ int	main(void)
 		else if (cmd == "SEARCH")
 		{
 			thePhoneBook.printContactTab();
-			if (thePhoneBook.askIndexContact() == false)
-				break ;
+			if (thePhoneBook.getNbrContact() != 0)
+			{
+				if (thePhoneBook.askIndexContact() == false)
+					break ;
+			}
+			else
+				std::cout << "No contact available." << std::endl << std::endl;
 		}
 		else if (cmd == "EXIT")
 		{
