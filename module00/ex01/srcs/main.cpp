@@ -20,7 +20,7 @@ int	main(void)
 	PhoneBook	thePhoneBook;
 	std::string	cmd;
 
-	std::cout << "* Scratching HDD noise... *" << std::endl << std::endl;
+	std::cout << "* Loud scratching HDD noise... *" << std::endl << std::endl;
 	sleep(1);
 	std::cout << "My Digital Book v0.1 - (c) EzPhone 1988" << std::endl << std::endl;
 	while (true)
