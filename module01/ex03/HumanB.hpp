@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:48:45 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/26 15:24:15 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:21:15 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	HumanB
 		HumanB(std::string const name);
 		~HumanB(void);
 		void	attack(void) const;
-		void	setWeapon(Weapon * weapon);
+		void	setWeapon(Weapon & weapon);
 
 	private:
 

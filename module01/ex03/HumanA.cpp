@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:48:41 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/26 15:24:19 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:15:23 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ HumanA::~HumanA(void)
 
 void	HumanA::attack(void) const
 {
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << "." << std::endl;
+	std::cout << this->_name << " attacks with their ";
+	if (this->_weapon.getType() == "")
+		std::cout << "bare hands !";
+	else
+		std::cout << this->_weapon.getType() << "."; 
+	std::cout << std::endl;
 }

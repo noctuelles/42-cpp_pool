@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:48:41 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/26 15:24:16 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:22:48 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ HumanB::~HumanB(void)
 void	HumanB::attack(void) const
 {
 	std::cout << this->_name << " attacks with their ";
-	if (this->_weapon == NULL)
+	if (this->_weapon == NULL || this->_weapon->getType() == "")
 		std::cout << "bare hands !";
 	else
 		std::cout << this->_weapon->getType() << "."; 
 	std::cout << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon * weapon)
+void	HumanB::setWeapon(Weapon & weapon)
 {
 	std::cout << this->_name << " switched to ";
-	if (!weapon)
+	if (weapon.getType() == "")
 		std::cout << "bare hands ! This guy ain't joking around !";
 	else
-		std::cout << weapon->getType() << ".";
+		std::cout << weapon.getType() << ".";
 	std::cout << std::endl;
-	this->_weapon = weapon;
+	this->_weapon = &weapon;
 }
