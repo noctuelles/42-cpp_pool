@@ -6,47 +6,26 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/05/26 14:27:37 by plouvel          ###   ########.fr        #
+#    Updated: 2022/05/26 14:38:44 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS_DIR	=	objs
+CC		=	c++
 
-CC			=	c++
+STD		=	c++98
 
-STD			=	c++98
+CFLAGS	=	-Wall -Werror -Wextra -std=$(STD)
 
-CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD)
+SRCS	=	main.cpp
 
-SRCS		=	main.cpp        \
-				Zombie.cpp      \
-				zombieHorde.cpp
+NAME	=	hi_this_is_brain
 
-OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
+RM		=	rm -rf
 
-DEPS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.d))
-
-NAME		=	zombie_testing
-
-RM			=	rm -rf
-
-$(NAME):		$(OBJS)
-				$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-
-$(OBJS_DIR)/%.o:./%.cpp
-				@mkdir -p $(dir $@)
-				$(CC) $(CFLAGS) -c $< -o $@
-
-all:			$(NAME)
+$(NAME):	$(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean:
-				$(RM) $(OBJS_DIR)
+	$(RM) $(NAME)
 
-fclean:			clean
-				$(RM) $(NAME)
-
-re:				fclean all
-
--include $(DEPS)
-
-.PHONY:			all clean fclean re
+.PHONY:		clean

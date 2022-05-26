@@ -6,29 +6,48 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/05/26 13:53:53 by plouvel          ###   ########.fr        #
+#    Updated: 2022/05/26 14:27:37 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	c++
+OBJS_DIR	=	objs
 
-STD		=	c++98
+CC			=	c++
 
-CFLAGS	=	-Wall -Werror -Wextra -std=$(STD)
+STD			=	c++98
 
-SRCS	=	main.cpp        \
-			Zombie.cpp      \
-			newZombie.cpp   \
-			randomChump.cpp
+CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD)
 
-NAME	=	zombie_testing
+SRCS		=	main.cpp        \
+				Zombie.cpp      \
+				newZombie.cpp   \
+				randomChump.cpp
 
-RM		=	rm -rf
+OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 
-$(NAME):	$(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+DEPS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.d))
+
+NAME		=	zombie_testing
+
+RM			=	rm -rf
+
+$(NAME):		$(OBJS)
+				$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
+
+$(OBJS_DIR)/%.o:./%.cpp
+				@mkdir -p $(dir $@)
+				$(CC) $(CFLAGS) -c $< -o $@
+
+all:			$(NAME)
 
 clean:
-	$(RM) $(NAME)
+				$(RM) $(OBJS_DIR)
 
-.PHONY:		clean
+fclean:			clean
+				$(RM) $(NAME)
+
+re:				fclean all
+
+-include $(DEPS)
+
+.PHONY:			all clean fclean re
