@@ -2,6 +2,8 @@
 
 # Testing script for CPP Module 01 ex04
 
+chmod -r ./tests/hello_world_not_readable
+
 PROGRAM="./sed_for_looser"
 
 echo -e "Opening non-existent file :\n"
@@ -41,3 +43,5 @@ $PROGRAM ./tests/lorem_ipsum "" ""
 diff --color ./tests/lorem_ipsum ./tests/lorem_ipsum.replace
 rm ./tests/lorem_ipsum.replace
 echo
+
+chmod +r ./tests/hello_world_not_readable
