@@ -13,24 +13,32 @@
 #ifndef FIXED_CLASS_H
 # define FIXED_CLASS_H
 
+#include <iostream>
+
 class	Fixed
 {
 	public:
 
 		Fixed(void);
+		Fixed(int const n);
+		Fixed(float const f);
 		Fixed(Fixed const & src);
 		~Fixed(void);
 
 		Fixed & operator=(Fixed const & rhs); 
 
-		int		getRawBits(void);
+		int	getRawBits(void);
 		void	setRawBits(int const raw);
+		int	toInt(void) const;
+		float	toFloat(void) const;
 
 	private:
 
-		int					_n;
+		int			_n;
 		static int const	_nbrBits = 8;
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& rhs);
 
 #endif // FIXED_CLASS_H
