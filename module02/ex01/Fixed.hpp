@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:05:21 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/27 17:59:55 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/30 11:13:52 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@ class	Fixed
 
 		Fixed & operator=(Fixed const & rhs); 
 
-		int	getRawBits(void);
+		int		getRawBits(void);
 		void	setRawBits(int const raw);
-		int	toInt(void) const;
+		int		toInt(void) const;
 		float	toFloat(void) const;
 
 	private:
 
-		int			_n;
+		int					_n;
 		static int const	_nbrBits = 8;
+
+		void	_showRawBits(int const n) const;
 
 };
 
