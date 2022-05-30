@@ -43,7 +43,7 @@ Fixed &	Fixed::operator=(Fixed const & rhs)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_n = rhs._n;
-	return *this;
+	return (*this);
 }
 
 int	Fixed::getRawBits(void)
@@ -81,9 +81,6 @@ int	Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	//showRawBits(this->_n);
-	//showRawBits(1 << this->_nbrBits);
-	//showRawBits((this->_n / (1 << this->_nbrBits)));
 	return ((float)this->_n / (1 << this->_nbrBits));
 }
 
