@@ -6,14 +6,14 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:07:05 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:54:50 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 18:01:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap(void) 
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << "ScavTrap default constructor called." << std::endl;
 	this->_hitPoints = 100;
