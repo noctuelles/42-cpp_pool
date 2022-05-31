@@ -6,29 +6,31 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:38:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:49:46 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 16:00:22 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap	bob = ScavTrap("Bob");
-	ScavTrap	sindy = ScavTrap("Sindy");
+	FragTrap	bob = FragTrap("Bob");
+	FragTrap	sindy = FragTrap("Sindy");
+	FragTrap	jonny = FragTrap("Jonny");
+	FragTrap	holly = FragTrap("Holly");
 
-	sindy.guardGate();
+	sindy.highFivesGuys();
 	for (int i = 0; i < 5; i++)
 	{
 		bob.attack("Sindy");
-		sindy.takeDamage(ScavTrap::defaultAttackDamage);
+		sindy.takeDamage(FragTrap::defaultAttackDamage);
 		if (i == 3)
 		{
 			sindy.attack("Bob");
-			bob.takeDamage(ScavTrap::defaultAttackDamage);
+			bob.takeDamage(FragTrap::defaultAttackDamage);
 		}
 	}
 	sindy.beRepaired(20);
 	bob.beRepaired(10);
-	bob.guardGate();
+	bob.highFivesGuys();
 }

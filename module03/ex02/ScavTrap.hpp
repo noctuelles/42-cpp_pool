@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 14:38:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:49:46 by plouvel          ###   ########.fr       */
+/*   Created: 2022/05/31 15:03:34 by plouvel           #+#    #+#             */
+/*   Updated: 2022/05/31 15:52:12 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_CLASS_H
+# define SCAVTRAP_CLASS_H
 
-int	main(void)
+#include "ClapTrap.hpp"
+
+class	ScavTrap : public ClapTrap
 {
-	ScavTrap	bob = ScavTrap("Bob");
-	ScavTrap	sindy = ScavTrap("Sindy");
+	public:
 
-	sindy.guardGate();
-	for (int i = 0; i < 5; i++)
-	{
-		bob.attack("Sindy");
-		sindy.takeDamage(ScavTrap::defaultAttackDamage);
-		if (i == 3)
-		{
-			sindy.attack("Bob");
-			bob.takeDamage(ScavTrap::defaultAttackDamage);
-		}
-	}
-	sindy.beRepaired(20);
-	bob.beRepaired(10);
-	bob.guardGate();
-}
+		ScavTrap(void);
+		ScavTrap(std::string const & name);
+		~ScavTrap(void);
+
+		ScavTrap &	operator=(ScavTrap const & rhs);
+
+		void	attack(std::string const & target);
+		void	guardGate(void);
+
+		static unsigned int const	defaultAttackDamage = 20;
+};
+
+#endif

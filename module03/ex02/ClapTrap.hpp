@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 15:03:34 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:49:46 by plouvel          ###   ########.fr       */
+/*   Created: 2022/05/31 12:16:31 by plouvel           #+#    #+#             */
+/*   Updated: 2022/05/31 15:41:52 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_CLASS_H
-# define SCAVTRAP_CLASS_H
+#ifndef CLAPTRAP_CLASS_H
+# define CLAPTRAP_CLASS_H
 
-#include "ClapTrap.hpp"
+#include <string>
 
-class	ScavTrap : public ClapTrap
+class	ClapTrap
 {
+
 	public:
 
-		ScavTrap(void);
-		ScavTrap(std::string const & name);
-		~ScavTrap(void);
+		ClapTrap(void);
+		ClapTrap(std::string const & name);
+		~ClapTrap(void);
 
-		ScavTrap &	operator=(ScavTrap const & rhs);
+		ClapTrap &	operator=(ClapTrap const & rhs);
 
 		void	attack(std::string const & target);
-		void	guardGate(void);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 
-		static unsigned int const	defaultAttackDamage = 20;
+		static unsigned int const	defaultAttackDamage = 0;
+
+	protected:
+
+		std::string		_name;
+		unsigned int	_hitPoints;
+		unsigned int	_energyPoints;
+		unsigned int	_attackDamage;
+
 };
 
 #endif

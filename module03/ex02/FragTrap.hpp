@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 14:38:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:49:46 by plouvel          ###   ########.fr       */
+/*   Created: 2022/05/31 15:50:24 by plouvel           #+#    #+#             */
+/*   Updated: 2022/05/31 16:00:21 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_CLASS_H
+# define SCAVTRAP_CLASS_H
 
-int	main(void)
+#include "ClapTrap.hpp"
+#include <string>
+
+class	FragTrap : public ClapTrap
 {
-	ScavTrap	bob = ScavTrap("Bob");
-	ScavTrap	sindy = ScavTrap("Sindy");
+	public:
 
-	sindy.guardGate();
-	for (int i = 0; i < 5; i++)
-	{
-		bob.attack("Sindy");
-		sindy.takeDamage(ScavTrap::defaultAttackDamage);
-		if (i == 3)
-		{
-			sindy.attack("Bob");
-			bob.takeDamage(ScavTrap::defaultAttackDamage);
-		}
-	}
-	sindy.beRepaired(20);
-	bob.beRepaired(10);
-	bob.guardGate();
-}
+		FragTrap(void);
+		FragTrap(std::string const & name);
+		~FragTrap(void);
+
+		FragTrap &	operator=(FragTrap const & rhs);
+
+		void	highFivesGuys(void);
+
+		static unsigned int const	defaultAttackDamage = 30;
+};
+
+#endif
