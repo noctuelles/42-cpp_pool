@@ -6,14 +6,14 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:53:09 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 16:00:24 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 18:08:18 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap(void) 
+FragTrap::FragTrap(void) : ClapTrap()
 {
 	std::cout << "FragTrap default constructor called." << std::endl;
 	this->_hitPoints = 100;
