@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:39:23 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/30 19:38:27 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:14:09 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ Fixed	Fixed::operator--(int) // POST FIX
 
 /* END Unary operators */
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
 #ifdef DEBUG_MSG
 	std::cout << "getRawBits member function called" << std::endl;

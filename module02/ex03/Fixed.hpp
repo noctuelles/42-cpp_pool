@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:05:21 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/30 19:50:46 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:25:22 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class	Fixed
 		Fixed(Fixed const & src);
 		~Fixed(void);
 
-		Fixed &	operator=(Fixed const & rhs); 
+		Fixed &			operator=(Fixed const & rhs); 
+		Fixed const &	operator=(Fixed const & rhs) const; 
 
 		/* Relation operators */
 
@@ -52,7 +53,7 @@ class	Fixed
 		Fixed	operator++(int);
 		Fixed	operator--(int);
 
-		int		getRawBits(void);
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		int		toInt(void) const;
 		float	toFloat(void) const;

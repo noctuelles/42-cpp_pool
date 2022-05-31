@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:22:27 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/30 19:53:48 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 10:51:18 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class	Point
 
 	private:
 
-		Fixed	_x;
-		Fixed	_y;
+		Fixed const	_x;
+		Fixed const	_y;
 
 };
 

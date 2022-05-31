@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:39:23 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/30 19:48:58 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:25:20 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ Fixed &	Fixed::operator=(Fixed const & rhs)
 	std::cout << "Copy assignment operator called" << std::endl;
 #endif
 	this->_n = rhs._n;
+	return (*this);
+}
+
+Fixed const &	Fixed::operator=(Fixed const & rhs) const
+{
+#ifdef DEBUG_MSG
+	std::cout << "Copy assignment operator called" << std::endl;
+#endif
+	(const_cast<Fixed*>(this))->_n = rhs._n;
 	return (*this);
 }
 
@@ -166,7 +175,7 @@ Fixed	Fixed::operator--(int) // POST FIX
 
 /* END Unary operators */
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
 #ifdef DEBUG_MSG
 	std::cout << "getRawBits member function called" << std::endl;

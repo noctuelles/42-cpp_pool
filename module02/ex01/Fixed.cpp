@@ -25,7 +25,6 @@ Fixed::Fixed(int const n) : _n(n << _nbrBits)
 Fixed::Fixed(float const f) : _n(roundf(f * (1 << _nbrBits)))
 {
 	std::cout << "Float constructor called" << std::endl;
-	// _showRawBits(f * (1 << _nbrBits));
 }
 
 Fixed::Fixed(Fixed const & src)
@@ -46,7 +45,7 @@ Fixed &	Fixed::operator=(Fixed const & rhs)
 	return (*this);
 }
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_n);
