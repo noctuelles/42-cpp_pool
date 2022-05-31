@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:28:25 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/30 19:29:55 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:52:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iomanip>
 #include <cmath>
 
-//# define DEBUG
+// # define DEBUG
 
 static Fixed	getSign(Point const a, Point const b, Point const point)
 {	
@@ -49,19 +49,34 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	Fixed	signCompareAC_Point = getSign(a, c, point);
 	Fixed	signCompareBC_Point = getSign(b, c, point);
 
-	if (signCompareAB_C > 0 && signCompareAB_Point < 0)
-		return (false);
-	else if (signCompareAB_C < 0 && signCompareAB_Point > 0)
+	if (roundf(signCompareAB_Point.toFloat()) != 0)
+	{
+		if (signCompareAB_C > 0 && signCompareAB_Point < 0)
+			return (false);
+		else if (signCompareAB_C < 0 && signCompareAB_Point > 0)
+			return (false);
+	}
+	else
 		return (false);
 
-	if (signCompareAC_B > 0 && signCompareAC_Point < 0)
-		return (false);
-	else if (signCompareAC_B < 0 && signCompareAC_Point > 0)
+	if (roundf(signCompareAC_Point.toFloat()) != 0)
+	{
+		if (signCompareAC_B > 0 && signCompareAC_Point < 0)
+			return (false);
+		else if (signCompareAC_B < 0 && signCompareAC_Point > 0)
+			return (false);
+	}
+	else
 		return (false);
 
-	if (signCompareBC_A > 0 && signCompareBC_Point < 0)
-		return (false);
-	else if (signCompareBC_A < 0 && signCompareBC_Point > 0)
+	if (roundf(signCompareBC_Point.toFloat()) != 0)
+	{
+		if (signCompareBC_A > 0 && signCompareBC_Point < 0)
+			return (false);
+		else if (signCompareBC_A < 0 && signCompareBC_Point > 0)
+			return (false);
+	}
+	else
 		return (false);
 
 	return (true);
