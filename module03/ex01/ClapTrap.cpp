@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 12:21:07 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 15:41:28 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:46:20 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		if (this->_energyPoints > 0)
 		{
 			this->_energyPoints--;
+			this->_hitPoints += amount;
 			std::cout << "ClapTrap \"" << this->_name << "\" repairing for " << amount << "." << std::endl;
 		}
 		else
