@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:53:09 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 18:07:36 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:55:54 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ FragTrap::FragTrap(std::string const & target) : ClapTrap(target)
 	return ;
 } 
 
+FragTrap::FragTrap(FragTrap const & src)
+{
+	std::cout << "FragTrap copy constructor called." << std::endl;
+	*this = src;
+}
+
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap destructor called : \"" << this->_name << "\"." << std::endl;
@@ -38,7 +44,7 @@ FragTrap::~FragTrap(void)
 
 FragTrap &	FragTrap::operator=(FragTrap const & rhs)
 {
-	std::cout << "FragTrap copy constructor called." << std::endl;
+	std::cout << "FragTrap assignment overload called." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
 	this->_energyPoints = rhs._energyPoints;

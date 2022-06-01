@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/05/31 15:58:40 by plouvel          ###   ########.fr        #
+#    Updated: 2022/06/01 14:00:18 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 
 DEPS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.d))
 
-NAME		=	scavtrap
+NAME		=	fragtrap
 
 RM			=	rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:56:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 17:45:17 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:04:12 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 	public:
 
 		DiamondTrap(void);
+		DiamondTrap(DiamondTrap const & src);
 		DiamondTrap(std::string const & name);
 		~DiamondTrap(void);
 

@@ -6,13 +6,14 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 12:16:31 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 17:44:02 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:02:55 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_CLASS_H
 # define CLAPTRAP_CLASS_H
 
+#include <ostream>
 #include <string>
 
 class	ClapTrap
@@ -21,6 +22,7 @@ class	ClapTrap
 	public:
 
 		ClapTrap(void);
+		ClapTrap(ClapTrap const & src);
 		ClapTrap(std::string const & name);
 		~ClapTrap(void);
 

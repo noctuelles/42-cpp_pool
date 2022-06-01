@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:57:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 17:59:25 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:04:11 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ DiamondTrap::DiamondTrap(std::string const & target) :	ClapTrap(target + "_clap_
 	this->_attackDamage = FragTrap::_attackDamage;
 } 
 
+DiamondTrap::DiamondTrap(DiamondTrap const & src)
+{
+	std::cout << "DiamondTrap copy constructor called." << std::endl;
+	*this = src;
+}
+
 DiamondTrap::~DiamondTrap(void)
 {
 	std::cout << "DiamondTrap destructor called : \"" << this->_name << "\"." << std::endl;
@@ -39,7 +45,7 @@ DiamondTrap::~DiamondTrap(void)
 
 DiamondTrap &	DiamondTrap::operator=(DiamondTrap const & rhs)
 {
-	std::cout << "DiamondTrap copy constructor called." << std::endl;
+	std::cout << "DiamondTrap assignement overload called." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
 	this->_energyPoints = rhs._energyPoints;

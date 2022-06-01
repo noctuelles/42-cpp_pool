@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:50:24 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 17:00:44 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:03:00 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class	FragTrap : virtual public ClapTrap
 
 		FragTrap(void);
 		FragTrap(std::string const & name);
+		FragTrap(FragTrap const & src);
 		~FragTrap(void);
 
 		FragTrap &	operator=(FragTrap const & rhs);

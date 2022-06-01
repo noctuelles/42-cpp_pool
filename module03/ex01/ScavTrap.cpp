@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:07:05 by plouvel           #+#    #+#             */
-/*   Updated: 2022/05/31 18:00:21 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:53:31 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ ScavTrap::ScavTrap(std::string const & target) : ClapTrap(target)
 	return ;
 } 
 
+ScavTrap::ScavTrap(ScavTrap const & src)
+{
+	std::cout << "ScavTrap copy constructor called." << std::endl;
+	*this = src;
+}
+
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap destructor called : \"" << this->_name << "\"." << std::endl;
@@ -38,7 +44,7 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap &	ScavTrap::operator=(ScavTrap const & rhs)
 {
-	std::cout << "ScavTrap copy constructor called." << std::endl;
+	std::cout << "ScavTrap assignement overload called." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
 	this->_energyPoints = rhs._energyPoints;
