@@ -6,17 +6,17 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:14:53 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:23 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 20:08:28 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_CLASS_H
 # define DOG_CLASS_H
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class	Dog : public Animal
+class	Dog : public AAnimal
 {
 
 	public:

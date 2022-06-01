@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 15:08:54 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 19:10:11 by plouvel          ###   ########.fr       */
+/*   Created: 2022/06/01 20:11:35 by plouvel           #+#    #+#             */
+/*   Updated: 2022/06/01 20:13:56 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_CLASS_H
-# define ANIMAL_CLASS_H
- 
-#include <string>
+#include "AAnimal.hpp"
+#include <iostream>
 
-class	Animal
+AAnimal::~AAnimal(void)
 {
-
-	public:
-
-		Animal(void);
-		Animal(Animal const & src);
-		virtual ~Animal(void);
-
-		Animal &	operator=(Animal const & rhs);
-
-		virtual void	makeSound();
-
-	protected:
-
-		std::string	_type;
-};
-
-#endif // ANIMAL_CLASS_H
+	std::cout << "Abstract Animal destructor called." << std::endl;
+	return ;
+}

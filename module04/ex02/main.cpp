@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:33:40 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:24 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 20:15:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 #include <iostream>
 
 # define NUMBER_ANIMALS 2
+//# define TEST_ABSTRACT_CLASS
 
 int	main(void)
 {
-	Animal	*theAnimals[NUMBER_ANIMALS];
+#ifdef TEST_ABSTRACT_CLASS
+	AAnimal *Test = new AAnimal();
+#else
+	AAnimal	*theAnimals[NUMBER_ANIMALS];
 
 	std::cout << "\t* Init dogs and cats *" << std::endl << std::endl;
 
@@ -74,4 +78,6 @@ int	main(void)
 
 	delete Norminet;
 	delete aLessCuteCat;
+
+#endif
 }

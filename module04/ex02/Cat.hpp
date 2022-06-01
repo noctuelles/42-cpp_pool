@@ -6,17 +6,17 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:15:52 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:19 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/01 20:08:16 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_CLASS_H
 # define CAT_CLASS_H
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class	Cat : public Animal
+class	Cat : public AAnimal
 {
 
 	public:

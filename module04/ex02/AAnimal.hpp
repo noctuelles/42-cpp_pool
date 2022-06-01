@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 15:14:53 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:16:46 by plouvel          ###   ########.fr       */
+/*   Created: 2022/06/01 15:08:54 by plouvel           #+#    #+#             */
+/*   Updated: 2022/06/01 20:15:45 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_CLASS_H
-# define DOG_CLASS_H
+#ifndef AANIMAL_CLASS_H
+# define AANIMAL_CLASS_H
+ 
+#include <string>
 
-#include "Animal.hpp"
-#include "Brain.hpp"
-
-class	Dog : public Animal
+class	AAnimal
 {
-
 	public:
 
-		Dog(void);
-		Dog(Dog const & src);
-		~Dog(void);
+		virtual ~AAnimal(void);
 
-		Dog &	operator=(Dog const & rhs);
+		virtual void	makeSound(void) = 0;
 
-		virtual void	makeSound(void);
+	protected:
 
-	private:
-
-		Brain *	_brain;
+		std::string	_type;
 };
 
-#endif // CAT_CLASS_H
-
+#endif // AANIMAL_CLASS_H
