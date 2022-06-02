@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:24:31 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 19:03:26 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:20:29 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ Character::Character() : _name("DefaultCharacterName"), _inventory()
 Character::Character(Character const & src)
 {
 	std::cout << "Character copy constructor called." << std::endl;
-	for (size_t i = 0; i < 4; i++)
-		this->_inventory[i] = src._inventory[i]->clone();
-	this->_name = src._name;
+	*this = src;
 }
 
 Character::Character(std::string const & name) : _name(name), _inventory() 
@@ -44,7 +42,7 @@ Character &	Character::operator=(Character const & rhs)
 	std::cout << "Character assignement overload called." << std::endl;
 	this->_deleteInventory();
 	for (size_t i = 0; i < 4; i++)
-		this->_inventory[i] = rhs._inventory[i];
+		this->_inventory[i] = rhs._inventory[i]->clone();
 	this->_name = rhs._name;
 	return (*this);
 }
@@ -111,5 +109,8 @@ void	Character::use(int idx, ICharacter & target)
 void	Character::_deleteInventory(void)
 {
 	for (size_t i = 0; i < 4; i++)
-		delete (this->_inventory[i]);
+	{
+		if (this->_inventory[i] != NULL)
+			delete (this->_inventory[i]);
+	}
 }

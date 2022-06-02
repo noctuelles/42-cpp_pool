@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:18:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 19:03:25 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:22:15 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
-Cure::Cure()
+Cure::Cure() : AMateria("cure")
 {
 	std::cout << "Cure default constructor called." << std::endl;
-	this->_type = "cure";
 }
 
-Cure::Cure(Cure const & src)
+Cure::Cure(Cure const & src) : AMateria("cure")
 {
 	std::cout << "Cure copy constructor called." << std::endl;
 	*this = src;

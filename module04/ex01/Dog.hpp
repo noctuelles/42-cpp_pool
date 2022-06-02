@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:14:53 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:16:46 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:36:54 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	Dog : public Animal
 
 		Dog &	operator=(Dog const & rhs);
 
-		virtual void	makeSound(void);
+		void	makeSound(void);
 
 	private:
 

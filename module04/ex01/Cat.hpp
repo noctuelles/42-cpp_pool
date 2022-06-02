@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:15:52 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:16:36 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:33:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	Cat : public Animal
 
 		Cat &	operator=(Cat const & rhs);
 
-		virtual void	makeSound(void);
+		void	makeSound(void);
 		Brain *	getBrain(void);
 
 	private:

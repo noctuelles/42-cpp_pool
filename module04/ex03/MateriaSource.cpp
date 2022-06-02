@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:25:37 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 19:03:23 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:12:30 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ MateriaSource &	MateriaSource::operator=(MateriaSource const & rhs)
 	this->_deleteLearnedMaterial();
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (src._learnedMateria[i] != NULL)
-			this->_learnedMateria[i] = src._learnedMateria[i]->clone();
+		if (rhs._learnedMateria[i] != NULL)
+			this->_learnedMateria[i] = rhs._learnedMateria[i]->clone();
 	}
 	return (*this);
 }
