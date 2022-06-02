@@ -6,20 +6,20 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:16:01 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 15:33:31 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:27:34 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat()
+Cat::Cat() : Animal()
 {
 	std::cout << "Cat default constructor called." << std::endl;
 	this->type = "Cat";
 }
 
-Cat::Cat(Cat const & src)
+Cat::Cat(Cat const & src) : Animal()
 {
 	std::cout << "Cat copy constructor called." << std::endl;
 	*this = src;

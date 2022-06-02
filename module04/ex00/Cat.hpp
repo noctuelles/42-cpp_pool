@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:15:52 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 15:33:32 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:26:34 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Cat : public Animal
 
 		Cat &	operator=(Cat const & rhs);
 
-		virtual void	makeSound(void);
+		void	makeSound(void);
 };
 
 #endif // CAT_CLASS_H

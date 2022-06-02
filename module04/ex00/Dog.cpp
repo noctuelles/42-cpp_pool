@@ -6,20 +6,20 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:10:04 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 15:33:32 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/02 23:28:16 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
 	 std::cout << "Dog default constructor called." << std::endl;
 	 this->type = "Dog";
 }
 
-Dog::Dog(Dog const & src)
+Dog::Dog(Dog const & src) : Animal()
 {
 	std::cout << "Dog copy constructor called." << std::endl;
 	*this = src;
