@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:24:31 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 17:09:10 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:49:06 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ class	Character : public ICharacter
 
 		Character &	operator=(Character const & rhs);
 
-		virtual void				equip(AMateria *m);
-		virtual void				unequip(int idx);
-		virtual std::string const &	getName(void) const;
-		virtual void				use(int idx, ICharacter& target);
+		void				equip(AMateria *m);
+		void				unequip(int idx);
+		std::string const &	getName(void) const;
+		void				use(int idx, ICharacter& target);
 
 	private:
 

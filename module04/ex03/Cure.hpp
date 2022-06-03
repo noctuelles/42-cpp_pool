@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:18:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 18:35:55 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:38:00 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class	Cure : public AMateria
 
 		Cure &	operator=(Cure const & rhs);
 
-		virtual AMateria *	clone(void) const;
-		virtual void	use(ICharacter & target);
+		AMateria *	clone(void) const;
+		void		use(ICharacter & target);
 
 };
 
