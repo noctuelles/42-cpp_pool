@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/06/03 11:56:49 by plouvel          ###   ########.fr        #
+#    Updated: 2022/06/03 12:02:34 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC			=	c++
 
 STD			=	c++98
 
-CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD) -g3 -I misc 
+CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD) -I misc 
 
 SRCS		=	AMateria.cpp \
 				Ice.cpp      \
