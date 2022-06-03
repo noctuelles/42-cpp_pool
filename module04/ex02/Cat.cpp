@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:16:01 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 11:33:00 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:59:02 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat(Cat const & src) : AAnimal(), _brain(NULL)
 Cat::~Cat()
 {
 	std::cout << "Cat destructor called." << std::endl;
-	delete this->_brain;
+	delete (this->_brain);
 }
 
 Cat &	Cat::operator=(Cat const & rhs)
