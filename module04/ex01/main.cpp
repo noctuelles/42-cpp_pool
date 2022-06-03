@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:33:40 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/02 23:59:37 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:19:44 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(void)
 	std::cout << std::endl;
 
 	std::cout << "A norminet clone appeared !" << std::endl;
-	aPerfectCopyOfNorminet = Norminet = Norminet;
+	aPerfectCopyOfNorminet = Norminet;
 	std::cout << std::endl;
 
 	std::cout << "Norminet clone first idea : " << aPerfectCopyOfNorminet->getBrain()->getIdea(0) << std::endl;

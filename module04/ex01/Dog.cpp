@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:10:04 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 00:00:02 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:19:07 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Dog::Dog(Dog const & src) : Animal(), _brain(NULL)
 Dog::~Dog()
 {
 	std::cout << "Dog destructor called." << std::endl;
-	delete this->_brain;
+	delete (this->_brain);
 }
 
 Dog &	Dog::operator=(Dog const & rhs)

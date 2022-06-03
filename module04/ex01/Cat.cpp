@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:16:01 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 00:00:49 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:19:09 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	Cat::makeSound(void)
 	std::cout << "I'm a " << this->_type << " i usually Meeooow!" << std::endl;
 }
 
-Brain *	Cat::getBrain()
+Brain *	Cat::getBrain() const
 {
 	return (this->_brain);
 }
