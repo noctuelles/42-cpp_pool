@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/06/01 20:12:22 by plouvel          ###   ########.fr        #
+#    Updated: 2022/06/03 11:25:57 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,9 @@ STD			=	c++98
 
 CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD)
 
-SRCS		=	AAnimal.cpp		\
-				WrongAnimal.cpp \
+SRCS		=	AAnimal.cpp     \
 				Dog.cpp         \
 				Cat.cpp         \
-				WrongCat.cpp    \
 				Brain.cpp       \
 				main.cpp       
 

@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:08:54 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:15:45 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:32:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ class	AAnimal
 {
 	public:
 
-		virtual ~AAnimal(void);
+		AAnimal(void);
+		virtual ~AAnimal(void) {};
 
 		virtual void	makeSound(void) = 0;
 

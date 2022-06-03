@@ -6,26 +6,23 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:16:01 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:20 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:33:00 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : _brain(new Brain())
+Cat::Cat() : AAnimal(), _brain(new Brain())
 {
 	std::cout << "Cat default constructor called." << std::endl;
 	this->_type = "Cat";
 }
 
-Cat::Cat(Cat const & src)
+Cat::Cat(Cat const & src) : AAnimal(), _brain(NULL)
 {
 	std::cout << "Cat copy constructor called." << std::endl;
-	this->_brain = new Brain();
-	for (size_t i = 0; i < Brain::nbrOfIdeas; i++)
-		this->_brain->setIdea(i, src._brain->getIdea(i));
-	this->_type = src._type;
+	*this = src;
 }
 
 Cat::~Cat()
@@ -37,8 +34,12 @@ Cat::~Cat()
 Cat &	Cat::operator=(Cat const & rhs)
 {
 	std::cout << "Cat assignement overload called." << std::endl;
+	if (this->_brain)
+		delete (this->_brain);
+	this->_brain = new Brain();
+	for (size_t i = 0; i < Brain::nbrOfIdeas; i++)
+		this->_brain->setIdea(i, rhs._brain->getIdea(i));
 	this->_type = rhs._type;
-	this->_brain = rhs._brain;
 	return (*this);
 }
 
@@ -47,7 +48,7 @@ void	Cat::makeSound(void)
 	std::cout << "I'm a " << this->_type << " i usually Meeooow!" << std::endl;
 }
 
-Brain *	Cat::getBrain()
+Brain *	Cat::getBrain() const
 {
 	return (this->_brain);
 }
