@@ -74,7 +74,7 @@ AForm *	Intern::makeForm(std::string const & form_name, std::string const & targ
 		}
 	}
 	if (!form)
-		std::cout << " failed to create";
+		std::cout << " failed to create, form doesn't exist ";
 	std::cout << " \"" << form_name << "\"." << std::endl;
 	return (form);
 }
