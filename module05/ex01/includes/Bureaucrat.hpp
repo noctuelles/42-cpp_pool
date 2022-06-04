@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:37:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 17:23:42 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 14:24:26 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Bureaucrat
 				virtual const char *	what(void) const throw();
 
 		};
+
 		class GradeTooLowException : public std::exception
 		{
 			public:

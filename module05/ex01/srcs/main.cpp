@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:12:39 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 17:23:44 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 14:24:20 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(void)
 		std::cout << bureaucrat;
 		bureaucrat.signForm(godForm);
 		bureaucrat.incrementGrade();
+		std::cout << bureaucrat;
+		bureaucrat.signForm(godForm);
 		bureaucrat.signForm(godForm);
 	}
 	std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:34:07 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 17:23:37 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 14:23:15 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,8 @@ class	Form
 				virtual const char *	what(void) const throw();
 
 		};
+
 		class GradeTooLowException : public std::exception
-		{
-			public:
-
-				virtual const char *	what(void) const throw();
-
-		};
-		class AlreadySigned : public std::exception
 		{
 			public:
 
@@ -52,11 +46,13 @@ class	Form
 
 		Form &	operator=(Form const & rhs);
 
+		/* Accesors */
+
 		std::string const &	getName(void) const;
 		unsigned int		getGradeRequiredToSign(void) const;
 		unsigned int		getGradeRequiredToExecute(void) const;
 
-		void				beSigned(Bureaucrat const & bureaucrat);
+		bool				beSigned(Bureaucrat const & bureaucrat);
 
 	private:
 
@@ -64,6 +60,9 @@ class	Form
 		bool				_isSigned;
 		unsigned int const	_gradeRequiredToSign;
 		unsigned int const	_gradeRequiredToExecute;
+
+		bool				_isSignableBy(Bureaucrat const & bureaucrat);
+		bool				_isExecutableBy(Bureaucrat const & bureaucrat);
 
 };
 

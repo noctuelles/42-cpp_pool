@@ -6,9 +6,13 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/06/03 17:08:06 by plouvel          ###   ########.fr        #
+#    Updated: 2022/06/04 14:13:44 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SRCS_DIR	=	srcs
+
+INC_DIR		=	includes
 
 OBJS_DIR	=	objs
 
@@ -16,7 +20,7 @@ CC			=	c++
 
 STD			=	c++98
 
-CFLAGS		=	-Wall -Werror -Wextra -MD -std=$(STD) -g3 -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -MD -I $(INC_DIR) -std=$(STD)
 
 SRCS		=	Bureaucrat.cpp	\
 				Form.cpp		\
@@ -33,7 +37,7 @@ RM			=	rm -rf
 $(NAME):		$(OBJS)
 				$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
-$(OBJS_DIR)/%.o:./%.cpp
+$(OBJS_DIR)/%.o:./$(SRCS_DIR)/%.cpp
 				@mkdir -p $(dir $@)
 				$(CC) $(CFLAGS) -c $< -o $@
 

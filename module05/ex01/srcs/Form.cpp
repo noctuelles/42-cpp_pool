@@ -6,15 +6,18 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:34:07 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 17:23:36 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 14:23:15 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-#include "BureaucratSymbols.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
-Form::Form() : _name("Default Form"), _gradeRequiredToSign(30), _gradeRequiredToExecute(20)
+Form::Form() :	_name("Default Form"),
+				_isSigned(false),
+				_gradeRequiredToSign(30),
+				_gradeRequiredToExecute(20)
 {
 	std::cout << "Form default constructor called." << std::endl;
 }
@@ -22,6 +25,7 @@ Form::Form() : _name("Default Form"), _gradeRequiredToSign(30), _gradeRequiredTo
 Form::Form(std::string const & name, unsigned int gradeRequiredToSign,
 										unsigned int gradeRequiredToExecute) :
 								_name(name),
+								_isSigned(false),
 								_gradeRequiredToSign(gradeRequiredToSign),
 								_gradeRequiredToExecute(gradeRequiredToExecute)
 {
@@ -39,22 +43,11 @@ Form::Form(std::string const & name, unsigned int gradeRequiredToSign,
 }
 
 Form::Form(Form const & src) :	_name(src._name),
+								_isSigned(src._isSigned),
 								_gradeRequiredToSign(src._gradeRequiredToSign),
 								_gradeRequiredToExecute(src._gradeRequiredToExecute)
 {
 	 std::cout << "Form copy constructor called." << std::endl;
-
-	 if (_gradeRequiredToSign < Bureaucrat::highestGrade)
-		 throw (Form::GradeTooHighException());
-	 else if (_gradeRequiredToSign > Bureaucrat::lowestGrade)
-		 throw (Form::GradeTooLowException());
-
-	 if (_gradeRequiredToExecute < Bureaucrat::highestGrade)
-		 throw (Form::GradeTooHighException());
-	 else if (_gradeRequiredToExecute > Bureaucrat::lowestGrade)
-		 throw (Form::GradeTooLowException());
-
-	 *this = src;
 }
 
 Form::~Form()
@@ -84,29 +77,46 @@ unsigned int	Form::getGradeRequiredToExecute(void) const
 	return (this->_gradeRequiredToExecute);
 }
 
-void			Form::beSigned(const Bureaucrat & bureaucrat)
+bool	Form::_isSignableBy(Bureaucrat const & bureaucrat)
 {
 	if (this->_isSigned)
-		return (throw (Form::AlreadySigned()));
+		return (false);
 	if (bureaucrat.getGrade() > this->_gradeRequiredToSign)
+	{
 		throw (Form::GradeTooLowException());
+		return (false);
+	}
+	return (true);
+}
+
+bool	Form::_isExecutableBy(Bureaucrat const & bureaucrat)
+{
+	if (!this->_isSigned)
+		return (false);
+	if (bureaucrat.getGrade() > this->_gradeRequiredToExecute)
+	{
+		throw (Form::GradeTooLowException());
+		return (false);
+	}
+	return (true);
+}
+
+bool			Form::beSigned(const Bureaucrat & bureaucrat)
+{
+	if (this->_isSignableBy(bureaucrat))
+		return (this->_isSigned = true);
 	else
-		this->_isSigned = true;
+		return (false);
 }
 
 const char *	Form::GradeTooHighException::what() const throw() 
 {
-	return ("Form grade too high ! Remember : follow the rules not your brain.");
+	return ("grade too high to create / sign form !");
 }
 
 const char *	Form::GradeTooLowException::what() const throw() 
 {
-	return ("Form grade too low ! Remember : follow the rules not your brain.");
-}
-
-const char *	Form::AlreadySigned::what() const throw() 
-{
-	return ("Form already signed !");
+	return ("grade too low to create / sign form !");
 }
 
 std::ostream &	operator<<(std::ostream & o, Form const & rhs)
