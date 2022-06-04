@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:37:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/03 15:31:38 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 13:55:11 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <streambuf>
 
-Bureaucrat::Bureaucrat() : _name("Random bureaucrat employee"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("Random bureaucrat"), _grade(150)
 {
 	std::cout << "Bureaucrat default constructor called." << std::endl;
 }
@@ -30,10 +30,10 @@ Bureaucrat::Bureaucrat(std::string const & name, int grade) :
 		throw (Bureaucrat::GradeTooLowException());
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src)
+Bureaucrat::Bureaucrat(Bureaucrat const & src) :	_name(src._name),
+													_grade(src._grade)
 {
 	std::cout << "Bureaucrat copy constructor called." << std::endl;
-	*this = src;
 }
 
 Bureaucrat::~Bureaucrat()
