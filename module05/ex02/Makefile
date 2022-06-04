@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:35:54 by plouvel           #+#    #+#              #
-#    Updated: 2022/06/04 01:10:34 by plouvel          ###   ########.fr        #
+#    Updated: 2022/06/04 15:20:58 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ STD			=	c++98
 
 CFLAGS		=	-Wall -Werror -Wextra -MD -I $(INC_DIR) -std=$(STD)
 
-SRCS		=	Bureaucrat.cpp	\
+SRCS		=	Bureaucrat.cpp \
 				ShrubberyCreationForm.cpp \
 				ShrubberyAsciiArt.cpp \
-				Form.cpp		\
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
+				AForm.cpp \
 				main.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
@@ -47,6 +49,7 @@ all:			$(NAME)
 
 clean:
 				$(RM) $(OBJS_DIR)
+				$(RM) *_shruberry
 
 fclean:			clean
 				$(RM) $(NAME)

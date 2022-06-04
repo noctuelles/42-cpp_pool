@@ -12,19 +12,29 @@
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
-#include "BureaucratSymbols.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm() : Form(
+RobotomyRequestForm::RobotomyRequestForm() : AForm(
 											"Robotomy Request Form",
 											RobotomyRequestForm::gradeToSign,
 											RobotomyRequestForm::gradeToExecute),
-											_robotomyAlea(true)
+											_target("Unknown target")
 {
 	std::cout << "RobotomyRequestForm default constructor called." << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src)
+RobotomyRequestForm::RobotomyRequestForm(std::string const & target) : AForm(
+											"Robotomy Request Form",
+											RobotomyRequestForm::gradeToSign,
+											RobotomyRequestForm::gradeToExecute),
+											_target(target)
+{
+	std::cout << "RobotomyRequestForm parameter constructor called." << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src) : AForm(src),
+											_target(src._target)
 {
 	std::cout << "RobotomyRequestForm copy constructor called." << std::endl;
 }
@@ -37,24 +47,27 @@ RobotomyRequestForm::~RobotomyRequestForm()
 RobotomyRequestForm &	RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
 	std::cout << "RobotomyRequestForm assignement overload called." << std::endl;
+	this->_target = rhs._target;
+	return (*this);
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat & executor) const
+bool	RobotomyRequestForm::execute(const Bureaucrat & executor) const
 {
-	static bool	robotomyAlea = true;
+	static bool	robotomizeBureaucrat = true;
 
-	if (!this->checkExecutionRequierement(executor))
-		return (throw(Form::GradeTooLowException()));
+	if (!this->_isExecutableBy(executor))
+		return (false);
 	std::cout << "* loud drilling noises *" << std::endl;
-	std::cout << "Bureaucrat \"" << executor.getName() << "\"";
-	if (robotomyAlea)
+	std::cout << "\"" << this->_target << "\"";
+	if (robotomizeBureaucrat)
 	{
 		std::cout << " has been sucessfully robotomized !" << std::endl;
-		robotomyAlea = false;
+		robotomizeBureaucrat = false;
 	}
 	else
 	{
 		std::cout << " resisted the robotomization !" << std::endl;
-		robotomyAlea = true;
+		robotomizeBureaucrat = true;
 	}
+	return (true);
 }

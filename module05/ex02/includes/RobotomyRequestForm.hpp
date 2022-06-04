@@ -14,27 +14,29 @@
 #ifndef ROBOTOMYREQUESTFORM_CLASS_H
 # define ROBOTOMYREQUESTFORM_CLASS_H
 
-#include "Form.hpp"
+#include "AForm.hpp"
+#include <string>
 
-class	RobotomyRequestForm : public Form
+class	RobotomyRequestForm : public AForm
 {
 
 	public:
 
 		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string const & target);
 		RobotomyRequestForm(RobotomyRequestForm const & src);
 		~RobotomyRequestForm(void);
 
 		RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
 
-		void		execute(Bureaucrat const & executor) const;
+		bool		execute(Bureaucrat const & executor) const;
 
 		static unsigned int const	gradeToSign = 72;
 		static unsigned int const	gradeToExecute = 45;
 
 	private:
 
-		bool	_robotomyAlea;
+		std::string	_target;
 
 };
 

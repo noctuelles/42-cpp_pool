@@ -6,13 +6,13 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:11:09 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/04 00:10:51 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 14:58:47 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-std::string const ShrubberyCreationForm::shruberry_one =
+std::string const ShrubberyCreationForm::_shruberry_one =
 
 "          .     .  .      +     .      .          .\n"
 "     .       .      .     #       .           .\n"
@@ -31,7 +31,8 @@ std::string const ShrubberyCreationForm::shruberry_one =
 "       .         .   .   000     .        .       .\n"
 ".. .. ..................O000O........................ ...... ...\n";
 
-std::string const ShrubberyCreationForm::shruberry_two =
+std::string const ShrubberyCreationForm::_shruberry_two =
+
 "      /\\\n"
 "     /\\*\\\n"
 "    /\\O\\*\\\n"
@@ -42,3 +43,34 @@ std::string const ShrubberyCreationForm::shruberry_two =
 "      ||\n"
 "      ||\n"
 "      ||\n";
+
+std::string const ShrubberyCreationForm::_shruberry_three =
+
+"                                              .\n"
+"                                   .         ;\n"
+"      .              .              ;%     ;;\n"
+"        ,           ,                :;%  %;\n"
+"         :         ;                   :;%;'     .,\n"
+",.        %;     %;            ;        %;'    ,;\n"
+"  ;       ;%;  %%;        ,     %;    ;%;    ,%'\n"
+"   %;       %;%;      ,  ;       %;  ;%;   ,%;'\n"
+"    ;%;      %;        ;%;        % ;%;  ,%;'\n"
+"     `%;.     ;%;     %;'         `;%%;.%;'\n"
+"      `:;%.    ;%%. %@;        %; ;@%;%'\n"
+"         `:%;.  :;bd%;          %;@%;'\n"
+"           `@%:.  :;%.         ;@@%;'\n"
+"             `@%.  `;@%.      ;@@%;\n"
+"               `@%%. `@%%    ;@@%;\n"
+"                 ;@%. :@%%  %@@%;\n"
+"                   %@bd%%%bd%%:;\n"
+"                     #@%%%%%:;;\n"
+"                     %@@%%%::;\n"
+"                     %@@@%(o);  . '\n"
+"                     %@@@o%;:(.,'\n"
+"                 `.. %@@@o%::;\n"
+"                    `)@@@o%::;\n"
+"                     %@@(o)::;\n"
+"                    .%@@@@%::;\n"
+"                    ;%@@@@%::;.\n"
+"                   ;%@@@@%%:;;;.\n"
+"               ...;%@@@@@%%:;;;;,..\n";

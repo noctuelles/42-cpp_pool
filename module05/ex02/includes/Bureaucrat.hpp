@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:37:51 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/04 01:07:18 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:32:50 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <string>
 
-class	Form;
+class	AForm;
 
 class	Bureaucrat
 {
@@ -29,6 +29,7 @@ class	Bureaucrat
 				virtual const char *	what(void) const throw();
 
 		};
+
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -49,8 +50,8 @@ class	Bureaucrat
 
 		void	incrementGrade(void);
 		void	decrementGrade(void);
-		void	signForm(Form & form) const;
-		void	executeForm(Form const & form);
+		void	signForm(AForm & form) const;
+		void	executeForm(AForm const & form) const;
 
 		static unsigned int const	highestGrade = 1;
 		static unsigned int const	lowestGrade = 150;

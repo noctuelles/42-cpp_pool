@@ -6,36 +6,39 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:43:31 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/04 01:07:22 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:32:50 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_CLASS_H
 # define SHRUBBERYCREATIONFORM_CLASS_H
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class	ShrubberyCreationForm : public Form
+class	ShrubberyCreationForm : public AForm
 {
 
 	public:
 
 		ShrubberyCreationForm(void);
+		ShrubberyCreationForm(const std::string & target);
 		ShrubberyCreationForm(ShrubberyCreationForm const & src);
 		~ShrubberyCreationForm(void);
 
 		ShrubberyCreationForm &	operator=(ShrubberyCreationForm const & rhs);
 
-		void		execute(Bureaucrat const & executor) const;
+		bool		execute(Bureaucrat const & executor) const;
 
 		static unsigned int const	gradeToSign = 145;
 		static unsigned int const	gradeToExecute = 137;
 
 	private:
 
-		static std::string const shruberry_one;
-		static std::string const shruberry_two;
+		std::string					_target;
 
+		static std::string const	_shruberry_one;
+		static std::string const	_shruberry_two;
+		static std::string const	_shruberry_three;
 };
 
 #endif // SHRUBBERYCREATIONFORM_CLASS_H

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:34:07 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/04 01:07:20 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:32:54 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_CLASS_H
-# define FORM_CLASS_H
+#ifndef AFORM_CLASS_H
+# define AFORM_CLASS_H
  
 # include <string>
 
 class	Bureaucrat;
 
-class	Form
+class	AForm
 {
 
 	public:
@@ -29,6 +29,7 @@ class	Form
 				virtual const char *	what(void) const throw();
 
 		};
+
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -36,34 +37,23 @@ class	Form
 				virtual const char *	what(void) const throw();
 
 		};
-		class AlreadySigned : public std::exception
-		{
-			public:
 
-				virtual const char *	what(void) const throw();
-
-		};
-
-		Form(void);
-		Form(std::string const & name, unsigned int gradeRequiredToSign,
+		AForm(void);
+		AForm(std::string const & name, unsigned int gradeRequiredToSign,
 										unsigned int gradeRequiredToExecute);
-		Form(Form const & src);
-		~Form(void);
+		AForm(AForm const & src);
+		~AForm(void);
 
-		Form &	operator=(Form const & rhs);
+		AForm &	operator=(AForm const & rhs);
 
 		/* Accesors */
 
 		std::string const &	getName(void) const;
-		bool				getStatus(void) const;
 		unsigned int		getGradeRequiredToSign(void) const;
 		unsigned int		getGradeRequiredToExecute(void) const;
 
-		/* Methods and functions */
-
-		void				beSigned(Bureaucrat const & bureaucrat);
-		bool				checkExecutionRequierement(Bureaucrat const & executor) const;
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		bool				beSigned(Bureaucrat const & bureaucrat);
+		virtual bool		execute(Bureaucrat const & executor) const = 0;
 
 	private:
 
@@ -72,9 +62,14 @@ class	Form
 		unsigned int const	_gradeRequiredToSign;
 		unsigned int const	_gradeRequiredToExecute;
 
+	protected:
+
+		bool				_isSignableBy(Bureaucrat const & bureaucrat) const;
+		bool				_isExecutableBy(Bureaucrat const & bureaucrat) const;
+
 };
 
-std::ostream &	operator<<(std::ostream & o, Form const & rhs);
+std::ostream &	operator<<(std::ostream & o, AForm const & rhs);
 
-#endif // FORM_CLASS_H
+#endif // AFORM_CLASS_H
 

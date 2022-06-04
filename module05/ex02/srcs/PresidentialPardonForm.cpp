@@ -6,23 +6,33 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 01:04:00 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/04 01:07:18 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:32:52 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
-#include "BureaucratSymbols.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm() : Form(
-														"Presidential Pardon Form",
-														PresidentialPardonForm::gradeToSign,
-														PresidentialPardonForm::gradeToExecute)
+PresidentialPardonForm::PresidentialPardonForm() : AForm(
+													"Presidential Pardon Form",
+													PresidentialPardonForm::gradeToSign,
+													PresidentialPardonForm::gradeToExecute),
+													_target("Default target")
 {
 	std::cout << "PresidentialPardonForm default constructor called." << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src)
+PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : AForm(
+													"Presidential Pardon Form",
+													PresidentialPardonForm::gradeToSign,
+													PresidentialPardonForm::gradeToExecute),
+													_target(target)
+{
+	std::cout << "PresidentialPardonForm parametric constructor called." << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src) : AForm(src)
 {
 	std::cout << "PresidentialPardonForm copy constructor called." << std::endl;
 }
@@ -35,11 +45,14 @@ PresidentialPardonForm::~PresidentialPardonForm()
 PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonForm const & rhs)
 {
 	std::cout << "PresidentialPardonForm assignement overload called." << std::endl;
+	(void) rhs;
+	return (*this);
 }
 
-void	PresidentialPardonForm::execute(const Bureaucrat & executor) const
+bool	PresidentialPardonForm::execute(const Bureaucrat & executor) const
 {
-	if (!this->checkExecutionRequierement(executor))
-		return (throw(Form::GradeTooLowException()));
-	std::cout << "Bureaucrat \"" << executor.getName() << "\"" << "has been pardoned by Zaphod Beeblebrox." << std::endl;
+	if (!this->_isExecutableBy(executor))
+		return (false);
+	std::cout << "\"" << this->_target << "\"" << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	return (true);
 }
