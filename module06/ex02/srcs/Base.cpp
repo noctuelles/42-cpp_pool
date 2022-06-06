@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:38:35 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/06 17:57:55 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/06 19:57:51 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include <exception>
 #include <iostream>
 #include <cstdlib>
 
@@ -49,10 +50,22 @@ void	Base::identify(Base *p)
 void	Base::identify(Base &p)
 {
 	std::cout << "As reference: ";
-	if (dynamic_cast<A*>(&p))
+	try
+	{
+		(void) dynamic_cast<A &>(p);
 		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B*>(&p))
+	}
+	catch (std::exception & e) {}
+	try
+	{
+		(void) dynamic_cast<B &>(p);
 		std::cout << "B" << std::endl;
-	else if (dynamic_cast<C*>(&p))
+	}
+	catch (std::exception & e) {}
+	try
+	{
+		(void) dynamic_cast<C &>(p);
 		std::cout << "C" << std::endl;
+	}
+	catch (std::exception & e) {}
 }
