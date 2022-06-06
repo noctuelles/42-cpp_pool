@@ -6,14 +6,14 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:55:27 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/06 16:57:04 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:00:21 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_HPP
 # define DATA_HPP
 
-#include <cstdint>
+#include <stdint.h>
 
 typedef struct e_Data
 {
