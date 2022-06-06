@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:25:24 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/06 15:47:00 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:48:51 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,8 +205,9 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 				_toInt.value.i = std::atoi(litteral.c_str());
 				_toDouble.value.d = static_cast<double>(_toInt.value.i);
 				_toFloat.value.f = static_cast<float>(_toInt.value.i);
-				if (_toInt.value.i >= std::numeric_limits<char>::min()
-						&& _toInt.value.i <= std::numeric_limits<char>::max())
+
+				if (_toInt.value.i >= static_cast<int>(std::numeric_limits<char>::min())
+						&& _toInt.value.i <= static_cast<int>(std::numeric_limits<char>::max()))
 				{
 					if (_isCharDisplayable(_toInt.value.i))
 						_toChar.value.c = static_cast<char>(_toInt.value.i);
