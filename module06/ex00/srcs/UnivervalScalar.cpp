@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:25:24 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/06 15:48:51 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:29:29 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cctype>
 #include <streambuf>
 #include <string>
+#include <stdlib.h>
 
 // #include <iostream>
 
@@ -25,7 +26,7 @@ std::string const	UnivervalScalar::errCantConv = "impossible conversion";
 std::string const	UnivervalScalar::errOverflow = "impossible conversion due to overflow";
 std::string const	UnivervalScalar::errNotDisplay = "not displayable";
 
-UnivervalScalar::UnivervalScalar() : _type(Scalar::Default), _toDouble(), _toFloat(), _toInt(), _toChar()
+UnivervalScalar::UnivervalScalar() : _type(Default), _toDouble(), _toFloat(), _toInt(), _toChar()
 {
 	// std::cout << "UnivervalScalar default constructor called." << std::endl;
 }
@@ -46,46 +47,46 @@ bool	UnivervalScalar::_parseInputLitteral(std::string const & litteral)
 	std::string const	floatNaN[3] = {"nanf", "-inff", "+inff"};
 	std::string const	doubleNaN[3] = {"nan", "-inf", "+inf"};
 
-	if (litteral.length() == 1 && !std::isdigit(*litteral.cbegin()))
-		_type = Scalar::Character;
+	if (litteral.length() == 1 && !std::isdigit(*litteral.begin()))
+		_type = Character;
 	else
 	{
-		for (it = litteral.begin(); it != litteral.end() && _type != Scalar::Ndef; it++)
+		for (it = litteral.begin(); it != litteral.end() && _type != Ndef; it++)
 		{
 			if (!std::isdigit(*it))
 			{
-				if (_type == Scalar::Default)
+				if (_type == Default)
 				{
 					if (*it == '.')
-						_type = Scalar::Double;
+						_type = Double;
 					else
-						_type = Scalar::Ndef;
+						_type = Ndef;
 				}
-				else if (_type == Scalar::Double)
+				else if (_type == Double)
 				{
 					if (*it == 'f')
-						_type = Scalar::Float;
+						_type = Float;
 					else
-						_type = Scalar::Ndef;
+						_type = Ndef;
 				}
 				else
-					_type = Scalar::Ndef;
+					_type = Ndef;
 			}
 		}
 	}
-	if (_type == Scalar::Default)
-		_type = Scalar::Integer;
-	else if (_type == Scalar::Ndef)
+	if (_type == Default)
+		_type = Integer;
+	else if (_type == Ndef)
 	{
 		if (_compareNaN(litteral, floatNaN))
 		{
-			_type = Scalar::NaNf;
+			_type = NaNf;
 			_toFloat.msg = litteral;
 			_toDouble.msg = litteral.substr(0, (litteral == "nanf") ? 3 : 4);
 		}
 		else if (_compareNaN(litteral, doubleNaN))
 		{
-			_type = Scalar::NaN;
+			_type = NaN;
 			_toDouble.msg = litteral;
 			_toFloat.msg = litteral + "f";
 		}
@@ -135,7 +136,11 @@ bool	UnivervalScalar::_isCharDisplayable(char const & c) const
 		return (false);
 }
 
-UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar()
+UnivervalScalar::UnivervalScalar(std::string const & litteral) :	_type(Default),
+																	_toDouble(),
+																	_toFloat(),
+																	_toInt(),
+																	_toChar()
 {
 	if ((_badInput = _parseInputLitteral(litteral)) == false)
 		std::cout << "error: bad input, does not refer to any litteral." << std::endl;
@@ -143,7 +148,7 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 	{
 		switch (_type)
 		{
-			case Scalar::Double:
+			case Double:
 				std::cout << "Detected type : double" << std::endl << std::endl;
 
 				_toDouble.value.d = std::atof(litteral.c_str());
@@ -171,7 +176,7 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 					_toChar.msg = errOverflow;
 
 				break;
-			case Scalar::Float:
+			case Float:
 				std::cout << "Detected type : float" << std::endl << std::endl;
 
 				_toFloat.value.f = static_cast<float>(std::atof(litteral.c_str()));
@@ -199,7 +204,7 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 					_toChar.msg = errOverflow;
 
 				break;
-			case Scalar::Integer:
+			case Integer:
 				std::cout << "Detected type : integer" << std::endl << std::endl;
 
 				_toInt.value.i = std::atoi(litteral.c_str());
@@ -218,7 +223,7 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 					_toChar.msg = errOverflow;
 
 				break;
-			case Scalar::Character:
+			case Character:
 				std::cout << "Detected type : character" << std::endl << std::endl;
 
 				_toDouble.value.d	= static_cast<double>(litteral[0]);
@@ -240,6 +245,7 @@ UnivervalScalar::UnivervalScalar(std::string const & litteral) : UnivervalScalar
 
 UnivervalScalar::UnivervalScalar(UnivervalScalar const & src)
 {
+	*this = src;
 	// std::cout << "UnivervalScalar copy constructor called." << std::endl;
 }
 
@@ -251,5 +257,10 @@ UnivervalScalar::~UnivervalScalar()
 UnivervalScalar &	UnivervalScalar::operator=(UnivervalScalar const & rhs)
 {
 	// std::cout << "UnivervalScalar assignement overload called." << std::endl;
+	_type = rhs._type;
+	_badInput = rhs._badInput;
+	_toDouble = rhs._toDouble;
+	_toInt = rhs._toInt;
+	_toChar = rhs._toChar;
 	return (*this);
 }

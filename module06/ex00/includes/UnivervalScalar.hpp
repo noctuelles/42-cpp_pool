@@ -19,7 +19,7 @@
 class	UnivervalScalar
 {
 
-	enum class	Scalar {Float, Integer, Character, Double, Ndef, Default, NaNf, NaN};
+	enum 	Scalar {Float, Integer, Character, Double, Ndef, Default, NaNf, NaN};
 
 	public:
 
