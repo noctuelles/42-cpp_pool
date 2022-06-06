@@ -6,6 +6,7 @@ int main(int argc, char **argv)
 {
 	(void) argc;
 
+	std::cout << std::setprecision(1) << std::fixed;
 	if (argc == 2)
 	{
 		UnivervalScalar scalar = UnivervalScalar(argv[1]);
