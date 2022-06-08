@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:53:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/08 15:28:58 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/08 18:18:38 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap(T & a, T & b)
 }
 
 template <typename T>
-T &	min(T const & a, T const & b)
+T &	min(T & a, T & b)
 {
 	if (b <= a)
 		return (b);
@@ -40,7 +40,7 @@ T const &	min(T const & a, T const & b)
 }
 
 template <typename T>
-T &	max(T const & a, T const & b)
+T &	max(T & a, T & b)
 {
 	if (b >= a)
 		return (b);
