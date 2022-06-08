@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:25:24 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/06 17:29:29 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/08 13:09:12 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,35 @@ bool	UnivervalScalar::_parseInputLitteral(std::string const & litteral)
 		_type = Character;
 	else
 	{
-		for (it = litteral.begin(); it != litteral.end() && _type != Ndef; it++)
+		it = litteral.begin();
+		if (*it == '-')
+			it++;
+		if (std::isdigit(*it))
 		{
-			if (!std::isdigit(*it))
+			for ( ; it != litteral.end() && _type != Ndef; it++)
 			{
-				if (_type == Default)
+				if (!std::isdigit(*it))
 				{
-					if (*it == '.')
-						_type = Double;
+					if (_type == Default)
+					{
+						if (*it == '.')
+							_type = Double;
+						else
+							_type = Ndef;
+					}
+					else if (_type == Double)
+					{
+						if (*it == 'f')
+							_type = Float;
+						else
+							_type = Ndef;
+					}
 					else
 						_type = Ndef;
 				}
-				else if (_type == Double)
-				{
-					if (*it == 'f')
-						_type = Float;
-					else
-						_type = Ndef;
-				}
-				else
-					_type = Ndef;
 			}
 		}
+		else _type = Ndef;
 	}
 	if (_type == Default)
 		_type = Integer;
