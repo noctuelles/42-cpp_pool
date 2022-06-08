@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:14:49 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/08 13:42:20 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/08 15:26:50 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,16 @@ class	Array
 
 		Array<A> &	operator=(Array<A> const & rhs)
 		{
-			delete [] (_array);
-			_size = rhs.size();
-			_array = new A[_size];
-			for (unsigned int i = 0; i < _size; i++)
-				_array[i] = rhs._array[i];
+			if (this != &rhs)
+			{
+				delete [] (_array);
+				_size = rhs.size();
+				_array = new A[_size];
+				for (unsigned int i = 0; i < _size; i++)
+					_array[i] = rhs._array[i];
+			}
+			else
+				_array = rhs._array;
 			return (*this);
 		}
 

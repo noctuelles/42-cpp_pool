@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:00:33 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/07 14:10:07 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/08 15:01:14 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ template <typename T>
 void	add_one(T & t)
 {
 	t += 1;
+}
+
+template <typename T>
+T up_2(T const & t)
+{
+    return t;
 }
 
 #endif
