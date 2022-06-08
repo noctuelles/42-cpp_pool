@@ -6,7 +6,7 @@
 /*   By: plouvel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:14:49 by plouvel           #+#    #+#             */
-/*   Updated: 2022/06/07 18:28:42 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/06/08 13:42:20 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ class	Array
 {
 
 	public:
+
+		class	OutOfBounds : public std::exception
+		{
+			public:
+
+				virtual char const * what(void) const throw()
+				{
+					return "Array out of bounds";
+				}
+		};
 
 		Array<A>(void) : _array(NULL), _size(0) {}
 		Array<A>(unsigned int size) : _array(new A[size]), _size(size) {}
@@ -46,10 +56,10 @@ class	Array
 			return (*this);
 		}
 
-		A &	operator[](unsigned int i)
+		A &	operator[](size_t i)
 		{
 			if (i >= _size)
-				throw(std::exception());
+				throw(OutOfBounds());
 			else
 				return (_array[i]);
 		}
