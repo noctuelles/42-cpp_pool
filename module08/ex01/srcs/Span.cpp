@@ -12,15 +12,13 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <exception>
 #include <algorithm>
 #include <cmath>
-#include <iostream>
 #include <iterator>
 
-Span::Span() : _list(), _size(0), _curr_size(0) {}
+Span::Span() : _list(), _curr_size(0), _size(0) {}
 
-Span::Span(unsigned int N) : _list(), _size(N), _curr_size(0) {}
+Span::Span(unsigned int N) : _list(), _curr_size(0), _size(N) {}
 
 Span::Span(Span const & src)
 {
@@ -30,7 +28,7 @@ Span::Span(Span const & src)
 void	Span::addNumber(int i)
 {
 	if (_curr_size >= _size)
-		throw (std::exception());
+		throw (TooManyNumbers());
 	else
 	{
 		_curr_size++;
@@ -38,19 +36,22 @@ void	Span::addNumber(int i)
 	}
 }
 
-unsigned int	Span::shortestSpan(void)
+unsigned int	Span::shortestSpan(void) const
 {
-	if (_size == 0 || _size == 1)
+	if (_size == 0 || this->_size == 1)
 		throw (CannotComputeSpan());
 	else
 	{
-		unsigned int	shortestSpan;
-		unsigned int	distance;
+		unsigned int					shortestSpan;
+		unsigned int					distance;
+		std::list<int>::const_iterator	last_elem;
 
-		shortestSpan = std::abs(*_list.begin() - *std::prev(_list.end()));
-		for (std::list<int>::iterator it = _list.begin(); it != std::prev(_list.end()); it++)
+		last_elem = static_cast<std::list<int>::const_iterator>(_list.end());
+		--last_elem;
+		shortestSpan = static_cast<unsigned int>(std::abs(_list.front() - _list.back()));
+		for (std::list<int>::const_iterator it = _list.begin(); it != last_elem; )
 		{
-			distance = std::abs(*it - *std::next(it));
+			distance = static_cast<unsigned int>(std::abs(*it - *(++it)));
 			if (distance < shortestSpan)
 				shortestSpan = distance;
 		}
@@ -58,7 +59,7 @@ unsigned int	Span::shortestSpan(void)
 	}
 }
 
-unsigned int	Span::longestSpan(void)
+unsigned int	Span::longestSpan(void) const
 {
 	if (_size == 0 || _size == 1)
 		throw (CannotComputeSpan());
@@ -69,14 +70,18 @@ unsigned int	Span::longestSpan(void)
 	}
 }
 
+void	Span::print(void) const
+{
+	std::for_each(_list.begin(), _list.end(), print_t<int>);
+}
+
 Span::~Span() {}
 
 Span &	Span::operator=(Span const & rhs)
 {
-	if (this != &rhs)
-	{
-	}
-	// std::cout << "Span assignement overload called." << std::endl;
+	_list = rhs._list;
+	_curr_size = rhs._curr_size;
+	_size = rhs._size;
 	return (*this);
 }
 
@@ -89,4 +94,3 @@ char const *	Span::CannotComputeSpan::what() const throw()
 {
 	return ("Cannot compute span");
 }
-

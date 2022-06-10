@@ -14,10 +14,15 @@
 #ifndef SPAN_CLASS_H
 # define SPAN_CLASS_H
  
-#include <exception>
 # include <iostream>
-#include <iterator>
 # include <list>
+# include <cmath>
+
+template <typename T>
+void	print_t(T const & t)
+{
+	std::cout << t << '\n';
+}
 
 class	Span
 {
@@ -31,6 +36,7 @@ class	Span
 				virtual char const *	what() const throw();
 
 		};
+
 		class	CannotComputeSpan : public std::exception
 		{
 			public:
@@ -47,8 +53,9 @@ class	Span
 		Span &	operator=(Span const & rhs);
 
 		void			addNumber(int i);
-		unsigned int	longestSpan(void);
-		unsigned int	shortestSpan(void);
+		unsigned int	longestSpan(void) const;
+		unsigned int	shortestSpan(void) const;
+		void			print(void) const;
 
 		template <typename T>
 		void	insertNumbers(typename T::const_iterator const & a, typename T::const_iterator const & b)
@@ -58,7 +65,7 @@ class	Span
 			distance = static_cast<size_t>(std::abs(std::distance(a, b)));
 			if (distance > _size)
 				throw(TooManyNumbers());
-			else
+			else if (distance)
 			{
 				_list.insert(_list.end(), a, b); 
 				_curr_size += distance;
@@ -74,4 +81,3 @@ class	Span
 };
 
 #endif // SPAN_CLASS_H
-
